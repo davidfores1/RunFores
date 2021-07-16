@@ -1,0 +1,14 @@
+<IfModule mime_module>
+AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+
+Options All -Indexes
+
+RewriteEngine On
+
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+Header always set Content-Security-Policy "upgrade-insecure-requests;"
+
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?ruta=$1
